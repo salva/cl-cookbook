@@ -1,4 +1,4 @@
-;; $Id: examples.lisp,v 1.1 2003/10/21 13:49:26 nicklevine Exp $
+;; $Id: examples.lisp,v 1.1 2003/10/21 17:30:56 nhabedi Exp $
 
 (in-package "CL-USER")
 
