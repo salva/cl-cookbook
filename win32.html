@@ -1285,7 +1285,7 @@ program source code visible while reading the text.
         (wn-p ec bc :external-format (external-format)) window-name
       (let ((hwnd (createwindowex 0 cn-p wn-p 
                      (logior ws_visible ws_overlappedwindow)
-                     cw-usedefault cw-usedefault cw-usedefault cw-usedefault
+                     cw_usedefault cw_usedefault cw_usedefault cw_usedefault
                      ;0 0 640 480
                      0 0 (GetModuleHandle-current 0) 0)))
         (when (zerop hwnd)
@@ -1730,5 +1730,5 @@ trademark of Xanalys Corporation.
 <p><a href="license.html">Copyright</a> &copy; 2002 The Common Lisp Cookbook Project
 <address>http://cl-cookbook.sourceforge.net/</address>
 
-<br>$Header: /cvsroot/cl-cookbook/cl-cookbook/win32.html,v 1.3 2003/03/18 07:31:11 jdcal Exp $
+<br>$Header: /cvsroot/cl-cookbook/cl-cookbook/win32.html,v 1.4 2003/03/18 13:48:47 jdcal Exp $
 </body> </html>
