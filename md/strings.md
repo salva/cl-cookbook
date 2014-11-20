@@ -1,24 +1,5 @@
-[The Common Lisp Cookbook](index.html) - Strings
-================================================
-
-Contents
---------
-
--   [Accessing Substrings](#substrings)
--   [Accessing Individual Characters](#chars)
--   [Manipulating Parts of a String](#manip)
--   [Concatenating Strings](#concat)
--   [Processing a String One Character at a Time](#process)
--   [Reversing a String by Word or Character](#reverse)
--   [Controlling Case](#case)
--   [Trimming Blanks from the Ends of a String](#trim)
--   [Converting between Symbols and Strings](#symbols)
--   [Converting between Characters and Strings](#conv-chars)
--   [Finding an Element of a String](#find-el)
--   [Finding a Substring of a String](#find-sub)
--   [Converting a String to a Number](#number)
--   [Converting a Number to a String](#conv-number)
--   [Comparing Strings](#compare)
+Strings
+=======
 
 The most important thing to know about strings in Common Lisp is
 probably that they are arrays and thus also sequences. This implies that
@@ -28,7 +9,7 @@ you've also searched for the more general array or sequence functions.
 We'll only cover a fraction of what can be done with and to strings
 here.
 
-### Accessing Substrings
+## Accessing Substrings
 
 As a string is a sequence, you can access substrings with the
 [`SUBSEQ`](http://www.lispworks.com/documentation/HyperSpec/Body/f_subseq.htm)
@@ -78,7 +59,7 @@ example:
     * *my-string*
     "Harpo Mar"
 
-### Accessing Individual Characters
+## Accessing Individual Characters
 
 You can use the function
 [`CHAR`](http://www.lispworks.com/documentation/HyperSpec/Body/f_char_.htm)
@@ -147,7 +128,7 @@ Check out the
 [`UTF-8 Wikipedia article`](http://en.wikipedia.org/wiki/UTF-8) for the
 range of supported characters and their encodings.
 
-### Manipulating Parts of a String
+## Manipulating Parts of a String
 
 There's a slew of (sequence) functions that can be used to manipulate a
 string and we'll only provide some examples here. See the [sequences
@@ -205,7 +186,7 @@ strings, files, etc. please consider using
 [cl-ppcre](http://www.weitz.de/cl-ppcre/) regular expressions and string
 processing library which is heavily optimized.
 
-### Concatenating Strings
+## Concatenating Strings
 
 The name says it all:
 [`CONCATENATE`](http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm)
@@ -284,7 +265,7 @@ at your disposal, should you need it.
         (format stream "~S - ~S" 1940 1993))
     "Zappa, 1940 - 1993"
 
-### Processing a String One Character at a Time
+## Processing a String One Character at a Time
 
 Use the
 [`MAP`](http://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm)
@@ -314,7 +295,7 @@ Or do it with
             collect char)
     (#\Z #\e #\p #\p #\o)
 
-### Reversing a String by Word or Character
+## Reversing a String by Word or Character
 
 Reversing a string by character is easy using the built-in
 [`REVERSE`](http://www.lispworks.com/documentation/HyperSpec/Body/f_revers.htm)
@@ -368,7 +349,7 @@ have to roll your own solution. Here's an attempt:
          "Reverse this sentence by word")))
     "word by sentence this Reverse"
 
-### Controlling Case
+## Controlling Case
 
 Common Lisp has a couple of [functions to control the case of a
 string](http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm).
@@ -423,7 +404,7 @@ to be sure, use
     * *my-upcase-string*
     "BIG"
 
-### Trimming Blanks from the Ends of a String
+## Trimming Blanks from the Ends of a String
 
 Not only can you trim blanks, but you can get rid of arbitary
 characters. The functions [`STRING-TRIM`, `STRING-LEFT-TRIM` and
@@ -447,7 +428,7 @@ The first argument can be any *sequence* of characters.
 Note: The caveat mentioned in the section about [Controlling
 Case](#case) also applies here.
 
-### Converting between Symbols and Strings
+## Converting between Symbols and Strings
 
 The function
 [`INTERN`](http://www.lispworks.com/documentation/HyperSpec/Body/f_intern.htm)
@@ -500,7 +481,7 @@ or
     * (string 'howdy)
     "HOWDY"
 
-### Converting between Characters and Strings
+## Converting between Characters and Strings
 
 You can use
 [`COERCE`](http://www.lispworks.com/documentation/HyperSpec/Body/f_coerce.htm)
@@ -535,7 +516,7 @@ instead.
     #\y can't be converted to type STRING.
        [Condition of type SIMPLE-TYPE-ERROR]
 
-### Finding an Element of a String
+## Finding an Element of a String
 
 Use
 [`FIND`](http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm),
@@ -574,7 +555,7 @@ and friends to count characters in a string.
     * (count-if #'digit-char-p "The Hyperspec contains approximately 110,000 hyperlinks." :start 38)
     5
 
-### Finding a Substring of a String
+## Finding a Substring of a String
 
 The function
 [`SEARCH`](http://www.lispworks.com/documentation/HyperSpec/Body/f_search.htm)
@@ -593,7 +574,7 @@ can find substrings of a string.
     * (search "FREE" "If we can't be free we can at least be cheap" :test #'char-equal)
     15
 
-### Converting a String to a Number
+## Converting a String to a Number
 
 CL provides the
 [`PARSE-INTEGER`](http://www.lispworks.com/documentation/HyperSpec/Body/f_parse_.htm)
@@ -657,7 +638,7 @@ is in effect if you're using this function.
     * *foo*
     "gotcha"
 
-### Converting a Number to a String
+## Converting a Number to a String
 
 The general function
 [`WRITE-TO-STRING`](http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm)
@@ -678,7 +659,7 @@ as quotients of two integers even when converted to strings.
     "1/3"
     * 
 
-### Comparing Strings
+## Comparing Strings
 
 The general functions
 [`EQUAL`](http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm)
@@ -713,14 +694,4 @@ if you need more versatility.
     0
     * (mismatch "Harpo Marx" "Zeppo Marx" :from-end t :test #'char=)
     3
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/strings.html,v 1.12
-2007/04/07 14:25:26 skeptomai Exp \$
 
