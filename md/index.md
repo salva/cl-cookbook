@@ -16,7 +16,7 @@ to [comp.lang.lisp](news:comp.lang.lisp).
 
 If you want to contribute to the CL Cookbook, you can...
 
-- send bug reports, corrections, additions, etc. using the GitHub bug tracker
+- send bug reports, corrections, additions, etc. using the GitHub [bug tracker](https://github.com/salva/cl-cookbook/issues)
 
 - fork the project on GitHub and contribute
 
@@ -33,16 +33,11 @@ If you want to contribute to the CL Cookbook, you can...
 -->
 
 Yes, we're talking to **you**! We need contributors - write a chapter
-that's missing and add it, find an open question and provide an answer,
-find bugs and [report
-them](http://sourceforge.net/tracker/?group_id=46815&atid=447472), or
-just [send
-questions](http://sourceforge.net/tracker/?atid=447475&group_id=46815&func=browse)
-and wait for somebody else to answer them. (If you have no idea what
-might be missing but would like to help, take a look at the [table of
-contents](http://www.oreilly.com/catalog/cookbook/toc.html) of the Perl
-Cookbook.) Don't worry about the formatting, just send plain text if you
-like - we'll take care about that later.
+that's missing and add it, find an open question and provide an
+answer, find bugs and report them or just send questions and wait for
+somebody else to answer them. If you have no idea what might be
+missing but would like to help, take a look at the table of contents
+of the Perl Cookbook.
 
 Thanks in advance for your help!
 
