@@ -6,7 +6,7 @@ something similar to the [Perl
 Cookbook](http://shop.oreilly.com/product/9781565922433.do) published by
 O'Reilly. More details about what it is and what it isn't can be found
 in this
-[thread](http://groups.google.com/groups?threadm=m3it9soz3m.fsf%40bird.agharta.de)
+[thread](https://groups.google.com/d/topic/comp.lang.lisp/WkYnSX8ldJA/discussion)
 from [comp.lang.lisp](news:comp.lang.lisp).
 
 The credit for finally giving birth to the project probably goes to
