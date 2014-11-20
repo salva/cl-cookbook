@@ -1,6 +1,8 @@
 The Common Lisp Cookbook
 ========================
 
+*This is a fork of the...*
+
 This is a collaborative project that aims to provide for Common Lisp
 something similar to the [Perl
 Cookbook](http://shop.oreilly.com/product/9781565922433.do) published by
