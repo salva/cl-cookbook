@@ -3,7 +3,7 @@ The Common Lisp Cookbook
 
 This is a collaborative project that aims to provide for Common Lisp
 something similar to the [Perl
-Cookbook](http://www.oreilly.com/catalog/cookbook/) published by
+Cookbook](http://shop.oreilly.com/product/9781565922433.do) published by
 O'Reilly. More details about what it is and what it isn't can be found
 in this
 [thread](http://groups.google.com/groups?threadm=m3it9soz3m.fsf%40bird.agharta.de)
