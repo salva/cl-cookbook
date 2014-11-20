@@ -26,6 +26,7 @@ Copyright
 =========
 
 Copyright © 2002-2007 [The Common Lisp Cookbook Project](http://cl-cookbook.sourceforge.net/)
+
 Copyright © 2014 Salvador Fandiño (sfandino@yahoo.com)
 
 
