@@ -51,9 +51,9 @@ Content
 
 -   [License](license.html)
 -   [Strings](strings.html)
--   [Dates and Times](dates_and_times.html)
+-   [Dates and Times](dates-and-times.html)
 -   [Hash Tables](hashes.html)
--   [Pattern Matching / Regular Expressions](pattern_matching.html)
+-   [Pattern Matching / Regular Expressions](pattern-matching.html)
 -   [Functions](functions.html)
 -   [Loop](loop.html)
 -   [Input/Output](io.html)
