@@ -1,5 +1,5 @@
-[The Common Lisp Cookbook](index.html) - License
-================================================
+License
+=======
 
 Redistribution and use of the "Common Lisp Cookbook" in its orginal form
 (HTML) or in 'derived' forms (PDF, Postscript, RTF and so forth) with or
@@ -22,13 +22,10 @@ liability, whether in contract, strict liability, or tort (including
 negligence or otherwise) arising in any way out of the use of this
 documentation, even if advised of the possibility of such damage.
 
-* * * * *
+Copyright
+=========
 
-Copyright © 2002-2007 The Common Lisp Cookbook Project
+Copyright © 2002-2007 [The Common Lisp Cookbook Project](http://cl-cookbook.sourceforge.net/)
+Copyright © 2014 Salvador Fandiño (sfandino@yahoo.com)
 
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/license.html,v 1.7 2007/01/16
-20:58:32 ozten Exp \$
 
