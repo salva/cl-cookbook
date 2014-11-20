@@ -22,18 +22,6 @@ If you want to contribute to the CL Cookbook, you can...
 
 - fork the project on GitHub and contribute
 
-
-<!--
--   ask one of the [project
-    admins](http://sourceforge.net/project/memberlist.php?group_id=46815)
-    to become a registered developer,
--   submit patches via Sourceforge's [patch tracking
-    system](http://sourceforge.net/tracker/?atid=447474&group_id=46815&func=browse),
--   or simply send stuff (corrections, additions, or even whole
-    chapters) by email.
-
--->
-
 Yes, we're talking to **you**! We need contributors - write a chapter
 that's missing and add it, find an open question and provide an
 answer, find bugs and report them or just send questions and wait for
