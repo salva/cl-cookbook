@@ -14,8 +14,14 @@ The credit for finally giving birth to the project probably goes to
 message](http://groups.google.com/groups?selm=76be8851.0201222259.70ecbcb1%40posting.google.com)
 to [comp.lang.lisp](news:comp.lang.lisp).
 
-If you want to contribute to the CL Cookbook, you can
+If you want to contribute to the CL Cookbook, you can...
 
+- send bug reports, corrections, additions, etc. using the GitHub bug tracker
+
+- fork the project on GitHub and contribute
+
+
+<!--
 -   ask one of the [project
     admins](http://sourceforge.net/project/memberlist.php?group_id=46815)
     to become a registered developer,
@@ -23,6 +29,8 @@ If you want to contribute to the CL Cookbook, you can
     system](http://sourceforge.net/tracker/?atid=447474&group_id=46815&func=browse),
 -   or simply send stuff (corrections, additions, or even whole
     chapters) by email.
+
+-->
 
 Yes, we're talking to **you**! We need contributors - write a chapter
 that's missing and add it, find an open question and provide an answer,
@@ -37,16 +45,6 @@ Cookbook.) Don't worry about the formatting, just send plain text if you
 like - we'll take care about that later.
 
 Thanks in advance for your help!
-
-The pages here on Sourceforge's web server should be fairly up-to-date -
-they're automatically checked out of the [CVS
-repository](http://sourceforge.net/cvs/?group_id=46815) once per day.
-You can also download a [nightly CVS
-tarball](http://cvs.sourceforge.net/cvstarballs/cl-cookbook-cvsroot.tar.bz2)
-for offline browsing. More info, including mailing list(s), can be found
-at the [Sourceforge project
-page](http://sourceforge.net/projects/cl-cookbook/). There's also a
-[CHANGELOG](CHANGELOG) available.
 
 Content
 -------
