@@ -140,16 +140,3 @@ Content
     Watson
 -   [The Dynamic Learning Center](http://www.dynamiclearningcenter.com/)
 
-[![SourceForge
-Logo](http://sourceforge.net/sflogo.php?group_id=46815)](http://sourceforge.net)
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
- \$Header: /cvsroot/cl-cookbook/cl-cookbook/index.html,v 1.38 2007/11/01
-07:41:01 nhabedi Exp \$
-
