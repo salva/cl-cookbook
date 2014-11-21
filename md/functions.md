@@ -1,13 +1,7 @@
-[The Common Lisp Cookbook](index.html) - Functions
-==================================================
+Functions
+=========
 
-Contents
---------
-
--   [Functions that return functions](#return)
--   [Currying functions](#curry)
-
-### Functions that return functions
+## Functions that return functions
 
 "How do I write a function that returns a function?" is a typical
 question asked by people who have learned Scheme before they started
@@ -204,7 +198,7 @@ lexical environments. Read the CLHS section about [Form
 Evaluation](http://www.lispworks.com/documentation/HyperSpec/Body/03_aba.htm)
 for the real deal.
 
-### Currying functions
+## Currying functions
 
 A related concept is that of
 [*currying*](http://www.cs.jhu.edu/~scott/pl/lectures/caml-intro.html#higherorder)
@@ -233,14 +227,3 @@ Note that the
 statement above is just a hint for the compiler so it can produce more
 efficient code if it so wishes. Leaving it out won't change the
 semantics of the function.
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/functions.html,v 1.8
-2007/01/16 20:58:32 ozten Exp \$
-
