@@ -1,17 +1,14 @@
-[The Common Lisp Cookbook](index.html) - Foreign Function Interfaces
-====================================================================
+# Foreign Function Interfaces
 
-Contents
---------
+***Rewrite me: there is [`CFFI`](http://common-lisp.net/project/cffi/) now!***
 
--   [Example: Calling 'gethostname' from CLISP](#clisp-gethost)
--   [Example: Calling 'gethostname' from Allegro CL](#alisp-gethost)
+---
 
 The ANSI Common Lisp standard doesn't mention this topic. So almost
 everything that can be said here depends on your OS and your
 implementation.
 
-### Example: Calling 'gethostname' from CLISP
+## Example: Calling 'gethostname' from CLISP
 
 Note: You should read the [relevant
 chapter](http://clisp.sourceforge.net/impnotes.html#dffi) from the CLISP
@@ -67,7 +64,7 @@ Possibly `SUBSEQ` and `POSITION` are superfluous, thanks to
         (error ... ; errno may be set
               ...))))
 
-### Example: Calling 'gethostname' from Allegro CL
+## Example: Calling 'gethostname' from Allegro CL
 
 This is how the same example above would be written in Allegro Common
 Lisp version 6 and above. ACL doesn't explicitely distinguish between
@@ -154,14 +151,3 @@ will fail. So a safer example would be:
         (unless (zerop ptr)
           (native-to-string ptr)))
     NIL
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/ffi.html,v 1.6 2007/01/16
-20:58:32 ozten Exp \$
-

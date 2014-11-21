@@ -1,19 +1,6 @@
-[The Common Lisp Cookbook](index.html) - Packages
-=================================================
+# Packages
 
-Contents
---------
-
--   ["The Complete Idiot's Guide to Common Lisp
-    Packages"](http://www.flownet.com/gat/packages.pdf)\
-     (by Erann Gat - external link to PDF file)
--   [List all Symbols in a Package](#list)
-
-[Tim Bradshaw](mailto:tfb@tfeb.org) is currently working on a whole
-chapter about this topic. If you want to contribute something you should
-contact him.
-
-### List all Symbols in a Package
+## List all Symbols in a Package
 
 Common Lisp provides some macros to iterate through the symbols of a
 package. The two most interesting are: [`DO-SYMBOLS` and
@@ -40,14 +27,3 @@ Or you can do it with
 
     (loop for s being the external-symbols of (find-package "PACKAGE")
           collect s)
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/packages.html,v 1.9
-2007/01/16 20:58:32 ozten Exp \$
-

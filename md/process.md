@@ -1,26 +1,6 @@
-[The Common Lisp Cookbook](index.html) - Threads
-================================================
+# Threads
 
-Contents
---------
-
--   [Introduction](#intro)
--   [Why bother?](#why_bother)
--   [Emergency exits](#emergency)
--   [Basics](#basics)
--   [Where's my output?](#output)
--   [Waiting](#waiting)
--   [Per-thread state](#state)
--   [Mailboxes](#mailbox)
--   [Interrupts](#interrupts)
--   [Threads and the CAPI windowing system](#capi)
--   [Locks](#locks)
--   [A brief warning about timers](#timers)
--   [Initializing multithreading](#initializing)
-
-### Introduction
-
-By threads, I mean separate execution strands within a single Lisp
+By threads, we mean separate execution strands within a single Lisp
 process, sharing the same address space. Typically, execution is
 automatically switched between these strands by the system (either by
 the lisp kernel or by the operating system) so that tasks appear to be
@@ -61,7 +41,7 @@ the chapter on "The MP Package" in the "LispWorks Reference Manual".
 Pre-requisite: I assume familiarity with Common Lisp, in particular with
 closures, the loop macro, and lambda forms.
 
-### Why bother?
+## Why bother?
 
 The first question to resolve is: why bother with threads? Sometimes
 your answer will simply be that your application is so straightforward
@@ -86,7 +66,7 @@ can be written without multi-threading. For example:
     dynamic bindings) with different parts of the application;
 -   you might even have the simple need to do two things at once.
 
-### Emergency exits
+## Emergency exits
 
 It's fairly likely when you're learning to work with threads that -
 every now and again - one of them will run away from you and either fall
@@ -104,7 +84,7 @@ the Process Browser and then click the "skull and crossbones" icon.
 `(mp:process-run-function "Foo" () (lambda () (loop)))` into a listener
 and use the Process Browser to kill the thread.
 
-### Basics
+## Basics
 
 In order to run a function in a separate thread, you need to do two
 things.
@@ -188,7 +168,7 @@ thread are bound on a per-thread basis.
 **Exercise:** get two or three new threads running simultaneously, and
 convince yourself they're all there.
 
-### Where's my output?
+## Where's my output?
 
 An obvious way to test whether threads are behaving as you imagine they
 ought, is to get them to print messages to the listener. For example,
@@ -219,7 +199,7 @@ return from `read-char`. Now you can prove directly where a thread's
 output goes (by sending something there). **Warning!** Don't be tempted
 to close the console window, or you'll lose your lisp.
 
-### Waiting
+## Waiting
 
 In all the above examples, a thread is created to run a simple function
 and then halt. In a typical application at least some of your threads
@@ -341,7 +321,7 @@ when each test is complete.
 **Exercise:** Create and test a thread which will wait until the symbol
 `foo` is `boundp` and then announce the fact.
 
-### Per-thread state
+## Per-thread state
 
 Every thread in your lisp system has its own execution stack and hence
 its own private state. The following aspects of state will therefore
@@ -421,7 +401,7 @@ thread. To create a binding in a new thread, use
 `mp:*process-initial-bindings*` why calling `in-package` in one listener
 does not affect the package in another.
 
-### Mailboxes
+## Mailboxes
 
 The mailbox is a structure designed to facilitate the transfer of data
 between threads. A number of operations are defined on mailboxes and are
@@ -493,7 +473,7 @@ call is removed and (b) the call is replaced by:
                          'identity
                   mailbox)
 
-### Interrupts
+## Interrupts
 
 The above sections have dealt with ways of using **data** to communicate
 between threads. Another important mode of communication is the
@@ -528,7 +508,7 @@ thread to sleeping for a long time (1000 seconds will do). Now create a
 second thread without the redirected `*standard-output*`, and have it
 ask the sleeper to print something for it.
 
-### Threads and the CAPI windowing system
+## Threads and the CAPI windowing system
 
 By default, every CAPI interface runs in its own thread. This thread
 will be used by the lisp system for actions such as redisplay and
@@ -581,7 +561,7 @@ execute the request in `*switchable*`'s thread.
                (green-pane switchable)))
        switchable))
 
-### Locks
+## Locks
 
 Sometimes it's important to control access to some resource, so that
 only one thread is operating on it at a time. One method of effecting
@@ -628,7 +608,7 @@ form.
            (format nil "Competing thread ~a" id) nil
            run-function id *standard-output*))))
 
-### A brief warning about timers
+## A brief warning about timers
 
 Timers are a handy way of notifying your application that some period of
 time has elapsed. You should however be aware of the following vital
@@ -678,7 +658,7 @@ another process to run the contents of your timer.
       (mp:process-run-function "Housekeeping" nil
                                'housekeeping))
 
-### Initializing multithreading
+## Initializing multithreading
 
 As noted previously, multithreading is "always" running in the LispWorks
 for Windows environment. However, while the image is initializing itself

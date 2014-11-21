@@ -1,16 +1,6 @@
-[Ravenbrook](http://www.ravenbrook.com/) / [ILC
-2003](http://www.international-lisp-conference.org/)
+# Fundamentals of CLOS
 
-* * * * *
-
-Fundamentals of CLOS
-====================
-
-[Nick Levine](mailto:ndl@ravenbrook.com), [Ravenbrook
-Limited](http://www.ravenbrook.com/), 2003-07-15
-
-1. Introduction
----------------
+*** Rewrite me: this document does not follow the cookbook approach ***
 
 This document was written for presentation during a tutorial session at
 the [International Lisp

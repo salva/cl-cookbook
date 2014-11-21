@@ -1,5 +1,11 @@
-[The Common Lisp Cookbook](http://cl-cookbook.sourceforge.net/) - Using Emacs as a Lisp IDE
-===========================================================================================
+# Using Emacs as a Lisp IDE
+
+*** Obsolete: you want SLIME now! ***
+
+*** Remove me? maybe this doesn't belongs to a cookbook ***
+
+
+---
 
 The material on this page was originally presented at the [ILC 2003
 conference](http://www.international-lisp-conference.org/index.html). A
@@ -15,26 +21,6 @@ included as part of the [Setting up an IDE with Emacs on Windows or Mac
 OS X](http://cl-cookbook.sourceforge.net/windows.html) page. If you use
 ILISP, the key bindings reflect the bindings that are present in the
 current CVS version of ILISP.
-
-Contents
---------
-
-1.  [Why Use Emacs?](#Slide-2)
-2.  [Emacs Lisp vs Common Lisp](#Slide-3)
-3.  [Lisp Modes in Emacs](#Slide-4)
-4.  [Lisp Modes in Emacs - Inferior Lisp Mode](#Slide-5)
-5.  [Lisp Modes in Emacs - ILISP](#Slide-6)
-6.  [Lisp Modes in Emacs - ELI (Emacs-Lisp Interface)](#Slide-7)
-7.  [Lisp Modes in Emacs - Which One to Choose?](#Slide-8)
-8.  [Working with Lisp Code](#Slide-9)
-9.  [Working with Lisp Code - Editing](#Slide-10)
-10. [Working with Lisp Code - Evaluating and Compiling Lisp](#Slide-11)
-11. [Working with Lisp Code - Searching Lisp Code](#Slide-12)
-12. [Lisp Documentation in Emacs - Learning About Lisp
-    Symbols](#Slide-13)
-13. [Lisp Documentation in Emacs - Lisp Documentation](#Slide-14)
-14. [Miscellaneous](#Slide-15)
-15. [Questions/Answers](#Slide-16)
 
 Why Use Emacs?
 --------------
@@ -71,6 +57,7 @@ Emacs Lisp vs Common Lisp
     -   No numerical tower support
 
 -   Some good Emacs Lisp learning resources:
+
     -   [An Introduction to Programming in Emacs
         Lisp](http://www.gnu.org/manual/emacs-lisp-intro/emacs-lisp-intro.html)
 

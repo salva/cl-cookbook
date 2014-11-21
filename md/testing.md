@@ -1,22 +1,11 @@
-[The Common Lisp Cookbook](index.html) - Testing
-================================================
-
-Contents
---------
-
--   [Install RT](#installrt)
--   [Write a Test](#writetest)
--   [Run a test](#runtest)
--   [Organize into suites](#writesuite)
--   [RT Odds and Ends](#rtend)
--   [Other Test Frameworks](#othertestframeworks)
+# Testing
 
 So you want to easily test the code your writing? The following recipes
 cover how to write automated tests. We will use an established and
 well-designed regression testing framework called 'RT'. In the last
 recipe we will discuss other options.
 
-### Install RT
+## Install RT
 
 You can learn more about Dr. Richard C. Waters' [RT on
 CLiki](http://www.cliki.net/RT). We will get up and running quickly, by
@@ -35,7 +24,7 @@ step.
 
 This line loads the RT package into your Lisp image.
 
-### Write a Test
+## Write a Test
 
 Normally we would be writing tests against our own code, but for clarity
 let's write some tests against operations from the [String
@@ -56,7 +45,7 @@ each actual, expected pair, they must be **`EQUAL`**. Note that the REPL
 prints the test name and under the covers this test is added to the
 current test suite.
 
-### Run a Test
+## Run a Test
 
 We have defined a test, let's run it.
 
@@ -120,7 +109,7 @@ Note that `DO-TESTS` picks up our third test
 and prints a report to standard out that no tests have failed. The value
 `T` is returned to signal a successful test run.
 
-### RT Odds and Ends
+## RT Odds and Ends
 
 If we pretend for a moment that `SUBSEQ` and `CONCATENATE` are Lisp
 operations which we have written, you can see how easy it is to build up
@@ -139,7 +128,7 @@ to the beginning of your test code for the current project. You can use
 `CONTINUE-TESTING` to run all of the tests which have either failed, or
 are newly defined.
 
-### Other Test Frameworks
+## Other Test Frameworks
 
 Test Driven Development, xUnit testing frameworks, Automated Acceptance
 Tests, etc are quite the rage in some areas of contemporary programming.
@@ -155,14 +144,4 @@ and one of many which is a good choice to look at is:
 
 -   [FiveAM](http://common-lisp.net/project/bese/FiveAM.html) -
     Contemporary and very Lisp
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/testing.html,v 1.1 2007/01/07
-07:12:20 ozten Exp \$
 

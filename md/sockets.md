@@ -1,16 +1,4 @@
-[The Common Lisp Cookbook](index.html) - Sockets
-================================================
-
-Contents
---------
-
--   [Introduction](#intro)
--   [Addresses](#adr)
--   [Server Sockets](#server)
--   [Client Sockets](#client)
--   [Communication](#comm)
--   [Closing](#close)
--   [A complete example](#example)
+# Sockets
 
 ANSI Common Lisp does not provide standard functions to operate on
 sockets, but all major CL implementations have added socket support to
@@ -29,8 +17,6 @@ for more information. Even if you do not use port, the concepts
 described here will most likely apply to your Lisp implementation, and
 it should not be hard to find out what the equivalent functions are in
 it.
-
-### Introduction
 
 First of all, some theory. If you are interested in using sockets you
 probably already know this stuff, but it is useful to go through it
@@ -83,14 +69,14 @@ sockets are normally used, in order to make this point clear.
 4.  A and B can freely exchange data over the socket, until either the
     client or the server closes it.
 
-### Addresses
+## Addresses
 
 A prerequisite for working with sockets is the ability to convert
 hostnames to IP addresses and vice versa. The function
 RESOLVE-HOST-IPADDR takes a hostname as its argument and returns a
 HOSTENT structure. For example:
 
-    > (resolve-host-ipaddr "www.lisp.org")
+    * (resolve-host-ipaddr "www.lisp.org")
     #S(HOSTENT :NAME "bibop.alu.org" :ALIASES NIL :ADDR-LIST ("128.18.65.4") :ADDR-TYPE 2)
 
 This structure contains four fields, but the only ones we are interested
@@ -102,18 +88,18 @@ load-balancing purposes, but not all implementations return the
 additional addresses). You can also use this function to perform the
 reverse mapping:
 
-    > (resolve-host-ipaddr "128.18.65.4")
+    * (resolve-host-ipaddr "128.18.65.4")
     #S(HOSTENT :NAME "bibop.alu.org" :ALIASES NIL :ADDR-LIST ("128.18.65.4") :ADDR-TYPE 2)
 
 The functions DOTTED-TO-IPADDR and IPADDR-TO-DOTTED are used to convert
 from dotted notation to ipaddrs:
 
-    > (dotted-to-ipaddr "128.18.65.4")
+    * (dotted-to-ipaddr "128.18.65.4")
     2148679940
-    > (ipaddr-to-dotted 2148679940)
+    * (ipaddr-to-dotted 2148679940)
     "128.18.65.4"
 
-### Server sockets
+## Server sockets
 
 As we saw earlier, the first step in setting up a socket consists in the
 server process *opening a port*. This is accomplished with the
@@ -171,7 +157,7 @@ the SOCKET-ACCEPT call to wait for another incoming connection. This
 basic structure could be extended to limit the number of concurrent
 processes, to perform load balancing, request logging, etc.
 
-### Client sockets
+## Client sockets
 
 Let's now look at the other side of the story. On the client machine,
 the Lisp process should call OPEN-SOCKET, specifying both the host to
@@ -203,7 +189,7 @@ be reversed in the two structures, that is:
 The function SOCKET-HOST/PORT returns the four pieces of information in
 a socket-stream structure as multiple values.
 
-### Communication
+## Communication
 
 Once both the client and the server are in possession of an open socket
 stream, they can start communicating. Since socket streams are a type of
@@ -211,12 +197,12 @@ streams, the two agents can communicate by writing to them (e.g., using
 FORMAT) and reading from them (e.g. using READ-LINE or READ). This is,
 for example, how the client would send a string to the server:
 
-    > (format client-stream "Username: user1~%")
-    > (force-output client-stream)
+    * (format client-stream "Username: user1~%")
+    * (force-output client-stream)
 
 And the server would do the following to read the message:
 
-    > (read-line server-stream)
+    * (read-line server-stream)
     "Username: user1"
 
 Note that since socket streams are usually buffered, the data is
@@ -230,13 +216,13 @@ data. In some implementations you can send binary data over a socket
 using the same techniques, in other implementations you have to specify
 whether the socket is going to be used for text or binary data.
 
-### Closing
+## Closing
 
 The socket can be closed by either party, by calling the regular CL
 function CLOSE on the sockets. The server can close the server socket
 with the function SOCKET-SERVER-CLOSE.
 
-### A complete example
+## A complete example
 
 In this section we will implement a very simple HTTP/0.9 server and
 client. HTTP/0.9 is a primitive version of the HTTP protocol currently
@@ -250,7 +236,7 @@ format:
 followed by a blank line, and the server replies with the contents of
 the specified file. Here is the code:
 
-    --------------------------cut here------------------------------------
+
     (in-package :port)
 
     ;;; Utilities
@@ -351,7 +337,6 @@ the specified file. Here is the code:
           
           ;; Close socket before exiting.
           (close socket))))
-    --------------------------cut here------------------------------------
 
 To run this example you should open two Lisp listeners, and load the
 PORT package followed by the above code into both of them. On one of
@@ -372,14 +357,4 @@ hostname because we are running both the client and the server on the
 same machine for simplicity, but of course they could be on two
 different machines. Note that the server runs forever, you will have to
 interrupt it manually after you have finished trying it.
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/sockets.html,v 1.10
-2007/01/28 08:41:01 skeptomai Exp \$
 

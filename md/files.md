@@ -1,5 +1,4 @@
-[The Common Lisp Cookbook](index.html) - Files and Directories
-==============================================================
+# Files and Directories
 
 Note: In this chapter, we use mainly
 [namestrings](http://www.lispworks.com/documentation/HyperSpec/Body/19_aa.htm)
@@ -10,19 +9,7 @@ The issue of
 will be the topic of separate chapter [REAL SOON
 NOW](http://www.tuxedo.org/~esr/jargon/html/entry/Real-Soon-Now.html).
 
-Content
--------
-
--   [Testing whether a File Exists](#exists)
--   [Opening a File](#open)
--   [Using Strings instead of Files](#strings)
--   [Reading a File one Line at a Time](#line)
--   [Reading a File one Character at a Time](#char)
--   [Reading a File into String](#string)
--   [Looking one Character ahead](#ahead)
--   [Random Access to a File](#random)
-
-### Testing whether a File Exists
+## Testing whether a File Exists
 
 Use the function
 [`PROBE-FILE`](http://www.lispworks.com/documentation/HyperSpec/Body/f_probe_.htm)
@@ -52,7 +39,7 @@ boolean](http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_g.htm#gene
 
     NIL
 
-### Opening a File
+## Opening a File
 
 Common Lisp has
 [`OPEN`](http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm)
@@ -103,9 +90,9 @@ WITH-OPEN-FILE below. Also note that you usually don't need to provide
 any keyword arguments if you just want to open an existing file for
 reading.
 
-### Using Strings instead of Files
+## Using Strings instead of Files
 
-### Reading a File one Line at a Time
+## Reading a File one Line at a Time
 
 [`READ-LINE`](http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_lin.htm)
 will read one line from a stream (which defaults to [*standard
@@ -133,7 +120,7 @@ to signal the end of the file:
               until (eq line 'foo)
               do (print line)))
 
-### Reading a File one Character at a Time
+## Reading a File one Character at a Time
 
 [`READ-CHAR`](http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_cha.htm)
 is similar to READ-LINE, but it only reads one character as opposed to
@@ -146,7 +133,7 @@ other characters by this function.
             ((null char))
           (print char)))
 
-### Reading a File into String
+## Reading a File into String
 
 It's quite common to need to access the contents of a file in string
 form. While this can be achieved by using `READ-LINE` or `READ-CHAR`
@@ -168,7 +155,7 @@ can set `:ELEMENT-TYPE` type argument of `WITH-OUTPUT-TO-STRING`,
 `WITH-OPEN-FILE` and `MAKE-ARRAY` functions to `'(UNSIGNED-BYTE 8)` to
 read data in octets.
 
-### Looking one Character ahead
+## Looking one Character ahead
 
 You can 'look at' the next character of a stream without actually
 removing it from there - this is what the function
@@ -258,7 +245,7 @@ only put back exactly *one* character onto the stream. Also, you *must*
 put back the same character that has been read previously, and you can't
 unread a character if none has been read before.
 
-### Random Access to a File
+## Random Access to a File
 
 Use the function
 [`FILE-POSITION`](http://www.lispworks.com/documentation/HyperSpec/Body/f_file_p.htm)
@@ -284,14 +271,3 @@ in the stream.
     4
     #\n 
     5
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/files.html,v 1.8 2008/07/15
-12:14:10 jthing Exp \$
-

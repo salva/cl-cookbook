@@ -1,14 +1,6 @@
-[The Common Lisp Cookbook](index.html) - Miscellaneous
-======================================================
+# Miscellaneous
 
-Contents
---------
-
--   [Re-using complex data structures](#opt)
--   [Using `ADJUST-ARRAY` instead of consing up new sequences with
-    `SUBSEQ`](#adjust)
-
-### Re-using complex data structures
+## Re-using complex data structures
 
 Sometimes you want your functions to behave in a 'functional' way, i.e.
 return
@@ -70,7 +62,7 @@ in which case you'll end up with:
 
     T
 
-### Using `ADJUST-ARRAY` instead of consing up new sequences with `SUBSEQ`
+## Using `ADJUST-ARRAY` instead of consing up new sequences with `SUBSEQ`
 
 Most CL functions operating on sequences will accept `START` and `END`
 keywords so you can make them operate on a sub-sequence without actually
@@ -111,13 +103,4 @@ string and reuse it multiple times with
       ;; even more code
       )
 
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/misc.html,v 1.5 2007/01/16
-20:58:32 ozten Exp \$
 

@@ -1,12 +1,4 @@
-[The Common Lisp Cookbook](index.html) - Defining Systems
-=========================================================
-
-Contents
---------
-
--   [An example](#example)
--   [Cross-platform defsystems](#cross)
--   [System construction for beginners](#begin)
+# Defining Systems
 
 A **system** is a collection of Lisp files that together constitute an
 application or a library, and that should therefore be managed as a
@@ -20,7 +12,7 @@ address, and therefore almost every lisp version has its own version of
 a defsystem tool; they all have approximately the same functionality,
 but with slightly different syntax.
 
-### An example
+## An example
 
 This example shows how to use the defsystem facility available in
 Allegro Common Lisp 6.x. Suppose you are working on an HTML generation
@@ -72,14 +64,14 @@ the `:html` system, we would change the above definition to:
                "library"))
           
 
-### Cross-platform defsystems
+## Cross-platform defsystems
 
 The most advanced attempt at building a cross-platform system definition
 tool is probably **MK-DEFSYSTEM**, available from
 [CLOCC](http://sourceforge.net/projects/clocc). Please refer to that
 site for more details on how to install it and use it.
 
-### System construction for beginners
+## System construction for beginners
 
 Organizing a large Lisp system is not trivial: managing the
 interdependencies among a large number of source files and the
@@ -139,14 +131,4 @@ again, and the system will be recompiled and reloaded. This behaves
 approximately like the `use` command in Perl or the `import` statement
 in Java: it allows you to easily access the functionality provided by a
 Lisp package with a single command.
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/systems.html,v 1.6 2007/01/28
-08:43:00 skeptomai Exp \$
 

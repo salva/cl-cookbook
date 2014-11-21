@@ -1,12 +1,4 @@
-[The Common Lisp Cookbook](index.html) - Interfacing with your OS
-=================================================================
-
-Contents
---------
-
--   [Accessing Environment Variables](#env)
--   [Accessing Command Line Arguments](#accessing-command-line)
--   [Forking with CMUCL](#fork-cmucl)
+# Interfacing with your OS
 
 The ANSI Common Lisp standard doesn't mention this topic. (Keep in mind
 that it was written at a time where [Lisp
@@ -15,7 +7,7 @@ were at their peak. On these boxes Lisp *was* your operating system!) So
 almost everything that can be said here depends on your OS and your
 implementation.
 
-### Accessing Environment variables
+## Accessing Environment variables
 
 Here's a function that'll allow you to look at Unix/Linux environment
 variables on a lot of different CL implementations:
@@ -49,18 +41,16 @@ above together with
 This feature might be important if you want to start subprocesses from
 your Lisp environment.
 
-### Accessing the command line arguments
+## Accessing the command line arguments
 
 Accessing command line arguments is implementation-specific but it
 appears most implementations have a way of getting at them.
 [SBCL](http://www.sbcl.org) has the special variable `*posix-argv*`
 
-     $ sbcl my-command-line-arg 
-
-....
+    $ sbcl my-command-line-arg 
+    ...
 
     * *posix-argv*
-
     ("sbcl" "my-command-line-arg")
     * 
 
@@ -87,7 +77,8 @@ multiple implementations:
        #+CMU extensions:*command-line-words*
        nil))
 
-### Forking with CMUCL
+
+## Forking with CMUCL
 
 Here's a function by Martin Cracauer that'll allow you to compile a
 couple of files in parallel with [CMUCL](http://www.cons.org/cmucl/). It
@@ -132,14 +123,3 @@ system call with this CL implementation.
         (do ((f files (cdr f)))
         ((not f))
           (load (compile-file-pathname (car f))))))
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/os.html,v 1.10 2007/01/28
-10:14:10 skeptomai Exp \$
-

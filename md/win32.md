@@ -1,33 +1,6 @@
-[The Common Lisp Cookbook](index.html) - Using the Win32 API
-============================================================
+# Using the Win32 API
 
-Contents
---------
-
--   [Introduction and Scope](#intro)
--   [Why Use Lisp with Win32?](#whywin32)
--   [A (Very) Brief Overview of a Win32 Program's Life](#apioverview)
--   [Windows Character Systems and Lisp](#unicode)
--   [FLI - The Foreign Language Interface\
-     Translating C Header Files to Lisp](#fli)
-    -   [FLI Data Types](#fli-types)
-    -   [FLI Data Structures](#fli-structures)
-    -   FLI Functions
--   [Callbacks from Windows to Lisp](#callbacks)
--   [Starting the Program](#startup)
--   [The Lisp REPL and Win32 Development](#repl)
--   [Making Direct Win32 Calls from CAPI](#capi)
--   [Interfacing to C](#cinterface)
--   [RAII and GC](#raiiandgc)
--   [COM](#com)
--   [Beginning to Use the Power of Lisp](#power)
--   [Conclusion](#conclusion)
--   [Appendix A: "Hello, Lisp" Program \#1](#appendixa)
--   [Appendix B: "Hello, Lisp" Program \#2](#appendixb)
--   [Appendix C: Program \#3](#appendixc)
--   [Appendix D: Paul Tarvydas's Example](#appendixd)
-
-### Introduction and Scope
+## Introduction and Scope
 
 This chapter introduces the basics of the Win32 API, demonstrates how it
 can be called from Lisp, and shows how Lisp can be used to create a
@@ -50,8 +23,6 @@ of application domains.
 The beginning sections of the chapter introduce concepts and ideas
 leading to the penultimate section, which concludes with a "Hello"
 program:
-
-``
 
     (require "win-header")
     (in-package :wh)
@@ -92,7 +63,7 @@ or a comparable book.
 The code presented here has been tested only with Lispworks for Windows
 4.2.7 Professional Edition under Windows XP.
 
-### Why Use Lisp with Win32?
+## Why Use Lisp with Win32?
 
 If a program can be cross-platform, it should be. The *Common* in Common
 Lisp is a tribute to the cross-platform, and cross-vendor, nature of
@@ -136,7 +107,7 @@ FLI, may seem strange at first. The OS is written in C/C++, so OS calls
 from C/C++ are not foreign calls, just as Lisp functions called from
 Lisp functions are not foreign calls.
 
-### A (Very) Brief Overview of a Win32 Program's Life
+## A (Very) Brief Overview of a Win32 Program's Life
 
 The OS treats a Win32 GUI program as a set of subroutines, or functions.
 
@@ -194,12 +165,10 @@ The OS treats a Win32 GUI program as a set of subroutines, or functions.
     returns zero from GetMessage, which is the cue to exit the message
     pump loop. WinMain then exits and the program ends.
 
-### Windows Character Systems and Lisp
+## Windows Character Systems and Lisp
 
 Some Microsoft operating systems use a single-byte, ASCII, character set
 and others use a double-byte, Unicode, character set. Use
-
-``
 
     (defun external-format ()
       (if (string= (software-type) "Windows NT")
@@ -221,8 +190,6 @@ tested the example program (see Appendix A) under Windows XP.) Without
 
 One FLI definition for the Win32 TextOut function is:
 
-``
-
     (fli:define-foreign-function
         (TextOut "TextOut" :dbcs :calling-convention :stdcall)
         ((HDC (:unsigned :long)) (nXStart (:unsigned :int)) (nYStart (:unsigned :int)) 
@@ -230,8 +197,6 @@ One FLI definition for the Win32 TextOut function is:
       :result-type (:unsigned :long))
 
 which is equivalent to:
-
-``
 
     (fli:define-foreign-function
         (TextOut "TextOutW" :calling-convention :stdcall)
@@ -250,8 +215,6 @@ function was found, loaded and called. Trying to call a Win32 function
 which the FLI cannot find results in an invocation of the restart
 handler. (The correct define-foreign-function definition for textout can
 be found in [Appendix A](#appendixa)
-
-``
 
     CL-USER 9 > (fli:define-foreign-function 
                         (TextOut-1 "TextOut" :dbcs :calling-convention :stdcall)
@@ -274,8 +237,6 @@ The `TextOut` function was found both times. This shows that a given
 Win32 function can be named in more than one FLI definition. This
 technique is sometimes useful when more than one Lisp datatype can
 satisfy the requirements for a parameter of the Win32 function.
-
-``
 
     CL-USER 13 > (fli:define-foreign-function 
                         (TextOut-3 "TextOutW" :dbcs :calling-convention :stdcall)
@@ -334,8 +295,6 @@ Edi Weitz asked if the :dbcs keyword decides at compile time or at run
 time which function to call, the ...A or the ...W. I wrote the following
 program:
 
-``
-
     (in-package :cl-user)
 
     (fli:define-foreign-function
@@ -371,7 +330,7 @@ program:
     ; displaying "Unicode".  The same dbcs-run.exe file, ftp'd to a Macintosh running OS 9 with
     ; Virtual PC running Windows 98, pops up a message box displaying "Ascii".
 
-### FLI - The Foreign Language Interface - Translating C Header Files to Lisp
+## FLI - The Foreign Language Interface - Translating C Header Files to Lisp
 
 When calling the Win32 API from C/C++, header files provided with the
 compiler are `#include`d in the program. The header files contain the
@@ -390,7 +349,7 @@ In the meantime, I make a base, or core, win-header.lisp and use other
 .lisp files, grouped by functionality, for less-frequently-used
 definitions, loading those .lisp files when I need them.
 
-#### FLI Data Types
+### FLI Data Types
 
 The Win32 C/C++ header files include many typedefs for OS-specific data
 types, including HINSTANCE, HANDLE, HMENU, LPCTSTR, and more. Regarding
@@ -437,16 +396,13 @@ particular in `sPAINTSTRUCT`. This works but I don't like my current
 method of obtaining the address of structure members or array entries. I
 find myself counting byte offsets by hand and using something like:
 
-``
-
     (defun interior-copy (to-struct-ptr byte-offset src-ptr)
       (let ((ptr (fli:make-pointer 
                   :address (fli:pointer-address to-struct-ptr :type :char))))
          (fli:incf-pointer ptr byte-offset)
          (wcscpy (fli:pointer-address ptr) (fli:pointer-address src-ptr))))
 
-\
-where wcscpy, the wide-character version of strcpy, is defined through
+Where wcscpy, the wide-character version of strcpy, is defined through
 the FLI. I hope there's a better way to do this and that someone quickly
 teaches me. I haven't worked enough with different OSes and Lispworks to
 know the best way to choose strcpy vs. wcscpy, other than to use
@@ -459,8 +415,6 @@ C/C++ header files. Thus `fli:define-c-typedef` is used to define BOOL,
 DWORD, HANDLE, HDC, and other similar Win32 data types.
 
 Many OS-specific constants must be made available to the Lisp program:
-
-``
 
     (defconstant CW_USEDEFAULT       #x80000000)
     (defconstant IDC_ARROW                32512)
@@ -481,11 +435,9 @@ I was curious about. (Of \> course first you have to find a reference .)
 VC++ then offers 'find definition' and will jump right to a header entry
 for a function or constant or macro or whatever."
 
-#### FLI Data Structures
+### FLI Data Structures
 
 I usually define the structure and a typedef for it:
-
-``
 
     ; PAINTSTRUCT
     (fli:define-c-struct sPAINTSTRUCT
@@ -500,22 +452,18 @@ I usually define the structure and a typedef for it:
       (rgbReserved (:c-array wBYTE 32)))
     (fli:define-c-typedef PAINTSTRUCT sPAINTSTRUCT)
 
-\
-and then can do something like:
-
-``
+And then can do something like:
 
     (fli:with-dynamic-foreign-objects ()
       (let ((ps-ptr (fli:allocate-dynamic-foreign-object :type 'paintstruct)))
         (format t "~&Pointer value: ~a" (fli:pointer-address ps-ptr))))
 
-\
-although I'm not clear on why the typedef is valuable. Lisp is not C and
+Although I'm not clear on why the typedef is valuable. Lisp is not C and
 in Lisp the typedef does not save me from typing `struct sPAINTSTRUCT`,
 for example. I think the typedefs are superfluous and I probably will
 stop using them.
 
-#### FLI Functions
+### FLI Functions
 
 It is very easy to define OS calls in the FLI. I start with the API
 definition in the OS documentation. If Visual C++ is available, the MSDN
@@ -523,8 +471,6 @@ documentation is probably loaded on the machine. The documentation is
 available on the [MSDN website](http://msdn.microsoft.com). I go to the
 Win32 documentation page for the desired function and do a simple
 translation:
-
-``
 
     ; LoadCursor
     (fli:define-foreign-function 
@@ -537,13 +483,11 @@ If I know the function includes a text parameter, I include the :dbcs
 keyword. If I don't know, I try it without :dbcs. The actual function
 called in this example is `LoadCursorA` or `LoadCursorW`.
 
-### Callbacks from Windows to Lisp
+## Callbacks from Windows to Lisp
 
 Once the message pump is up and going, the OS delivers the messages by
 calling a Lisp function repeatedly. Lisp functions callable from the
 foreign environment can be defined in the following manner:
-
-``
 
     ; WndProc -- Window procedure for the window we will create
     (fli:define-foreign-callable 
@@ -569,7 +513,7 @@ Lispworks IDE or from console mode, such as ILISP in Emacs. If
 `PostQuitMessage` is not called in console mode, the Win32 window does
 not close.
 
-### Starting the Program
+## Starting the Program
 
 Multiprocessing is always running under the Lispworks IDE but may or may
 not be running using ILISP under Emacs. Using multiprocessing is great
@@ -606,14 +550,12 @@ The program in Appendix A makes a call to register-class when the file
 is loaded. The call needs to be made only once and so I make the call at
 the top-level:
 
-``
-
     (defvar *reg-class-atom* (register-class))
 
 `create-toplevel-window-run` then only needs to call `CreateWindowEx`
 and optionally start the message pump.
 
-### The Lisp REPL and Win32 Development
+## The Lisp REPL and Win32 Development
 
 When a Win32 application is running from within the Lispworks IDE, one
 is able to enter Lisp forms at the IDE's REPL prompt. One can view any
@@ -633,7 +575,7 @@ careful management, and to allow the programs to be maintained, with
 bugs fixed, new functions defined, and CLOS objects redefined, during
 that time.
 
-### Making Direct Win32 Calls from CAPI
+## Making Direct Win32 Calls from CAPI
 
 Lispworks includes CAPI, a cross-platform API for GUI program
 development. CAPI is powerful and easy to use. For true cross-platform
@@ -643,8 +585,6 @@ However, even in a pure Win32 environment it is reasonable to want to
 use CAPI's features quickly to generate advanced GUI programs without
 having to recreate every wheel. It is possible to use Win32-specific
 features from within a CAPI program.
-
-``
 
     (defclass image-pane (output-pane) ()
        (:default-initargs
@@ -690,7 +630,7 @@ a setf from within a function to which the OS passes the hwnd. This may
 be used as a debug-only technique or left as a permanent part of the
 program.
 
-### Interfacing to C
+## Interfacing to C
 
 The OS makes many of the Win32 functions available always. Other
 functions, for example the `avicap32` video functions, exist in DLLs
@@ -699,14 +639,10 @@ require explicit loading.
 
 Make a def file, such as avicap32.def, named after the desired DLL:
 
-``
-
     exports capCreateCaptureWindow=capCreateCaptureWindowW
     exports capGetDriverDescription=capGetDriverDescriptionW
 
 and in Lisp
-
-``
 
     ;; capCreateCaptureWindow
     (fli:define-foreign-function
@@ -725,7 +661,7 @@ depending upon what functions are desired. Maybe :dbcs should be used
 here, eliminating the need for the hard-coded 'W' in the foreign
 function name.
 
-### RAII and GC
+## RAII and GC
 
 A common C++ idiom is "Resource Acquisition Is Initialization", in which
 a C++ object acquires an operating system resource, perhaps an open
@@ -766,7 +702,7 @@ which may be moved by the GC. Any data given to the OS should be
 allocated through the FLI, which is responsible for making the data
 immovable.
 
-### COM
+## COM
 
 COM is widely used in Windows programming. Lispworks for Windows
 includes a *COM/Automation User Guide and Reference Manual* and the
@@ -776,7 +712,7 @@ require com and automation and called the com:midl form, which loaded a
 huge series of IDL files, amazing in breadth and extent. I didn't
 actually make things happen with COM, though.
 
-### Beginning to Use the Power of Lisp
+## Beginning to Use the Power of Lisp
 
 My first thought, when I finally completed my demo program, was "That
 looks like any other Win32 program." There was nothing Lispy about it.
@@ -863,7 +799,7 @@ The program in [Appendix C](#appendixc) uses these macros to define a
 window including radio buttons, pushbuttons, a check box, text drawn on
 the background window, and a listview with columns.
 
-### Conclusion
+## Conclusion
 
 The example code presented in the text and in appendicies A-C places an
 emphasis on staying in Lisp and accessing the Win32 API from there. Paul
@@ -881,11 +817,9 @@ application, increases the reliability of the application, reduces
 maintenance time, and increases the reliability of maintenance changes.
 Lisp is designed to make this easy.
 
- 
+---
 
-* * * * *
-
-### Appendix A: "Hello, Lisp" Program \#1
+## Appendix A: "Hello, Lisp" Program \#1
 
 Here is a Win32 Lisp program that opens a GUI window displaying "Hello,
 Lisp!". A detailed discussion of program specifics follows the listing.
@@ -894,9 +828,6 @@ are `#included` in a C/C++ program.
 
 It may be advantageous to open a separate window with the program source
 code visible while reading the text.
-
-``
-
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;
@@ -1210,11 +1141,9 @@ code visible while reading the text.
 
 ![](AppendixA.jpg)
 
-* * * * *
+---
 
-### Appendix B: "Hello, Lisp!" Program \#2
-
-``
+## Appendix B: "Hello, Lisp!" Program \#2
 
     (require "win-header")
 
@@ -1232,11 +1161,9 @@ code visible while reading the text.
 
 ![](AppendixB.jpg)
 
-* * * * *
+---
 
-### Appendix C: Program \#3
-
-``
+## Appendix C: Program \#3
 
     (require "win-header")
 
@@ -1298,11 +1225,9 @@ code visible while reading the text.
 
 ![](AppendixC.jpg)
 
-* * * * *
+---
 
-### Appendix D: Paul Tarvydas's Example
-
-``
+## Appendix D: Paul Tarvydas's Example
 
     Here's an example that creates a windows class (in C) and gets invoked and 
     handled from LWW.  It is similar to the "Hello" example in Petzhold, except 

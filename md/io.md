@@ -1,14 +1,7 @@
-[The Common Lisp Cookbook](index.html) - Input/Output
+# Input/Output
 =====================================================
 
-Contents
---------
-
--   [Redirecting the Standard Output of your Program](#redir)
--   [Faithful Output with Character Streams](#faith)
--   [Fast Bulk I/O](#bulk)
-
-### Redirecting the Standard Output of your Program
+## Redirecting the Standard Output of your Program
 
 You do it like this:
 
@@ -40,7 +33,7 @@ opens the file - creating it if necessary - binds `*STANDARD-OUTPUT*`,
 executes its body, closes the file, and restores `*STANDARD-OUTPUT*` to
 its former value. It doesn't get more comfortable than this!
 
-### Faithful Output with Character Streams
+## Faithful Output with Character Streams
 
 By *faithful output* I mean that characters with codes between 0 and 255
 will be written out as is. It means, that I can
@@ -155,7 +148,7 @@ Here's some sample code to play with:
       (ext:make-encoding :charset 'charset:iso-8859-1 :line-terminator :dos)) (check-256))
     |#
 
-### Fast Bulk I/O
+## Fast Bulk I/O
 
 If you need to copy a lot of data and the source and destination are
 both streams (of the same [element
@@ -170,13 +163,4 @@ and
             while (plusp pos)
             do (write-sequence buf output-stream :end pos))))
 
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/io.html,v 1.15 2007/01/16
-20:58:32 ozten Exp \$
 

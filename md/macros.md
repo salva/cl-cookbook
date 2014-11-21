@@ -1,15 +1,10 @@
-[The Common Lisp Cookbook](index.html) - Macros and Backquote
-=============================================================
+# Macros and Backquote
 
-Contents
---------
+*** Rewrite me: this chapter does not follow the cookbook approach ***
 
--   [How Macros Work](#LtohTOCentry-1)
--   [Backquote](#LtohTOCentry-2)
--   [Getting Macros Right](#LtohTOCentry-3)
--   [What Macros are For](#LtohTOCentry-4)
+---
 
-### How Macros Work
+## How Macros Work
 
 The word *macro* is used generally in computer science to mean a
 syntactic extension to a programming language. (Note: The name comes
@@ -153,7 +148,7 @@ useless variant of `setq`: `(setq-reversible e1 e2 d)` behaves like
           (:backward (list 'setq e2 e1))
           (t (error ...))))
 
-### Backquote
+## Backquote
 
 Before taking another step, we need to introduce a piece of Lisp
 notation that is indispensable to defining macros, even though
@@ -265,7 +260,7 @@ If `sk` is being used as a stack, that is, it's going to be
 in the normal course of things, I would write tt (push x sk). If not, I
 would write `(setq sk (cons x sk))`.
 
-### Getting Macros Right
+## Getting Macros Right
 
 I said in [the first section](#LtohTOCentry-1) that my definition of
 `setq2` wasn't quite right, and now it's time to fix it.
@@ -314,7 +309,7 @@ where the order that expressions are evaluated differs from the order in
 which they are written. This is sure to trip up some user of the macro -
 even if you are the only user.
 
-### What Macros are For
+## What Macros are For
 
 Macros are for making syntactic extensions to Lisp. One often hears it
 said that macros are a bad idea, that users can't be trusted with them,
@@ -661,14 +656,4 @@ define two (or more) versions of it, or just one, a function whose
 arguments must be quoted to prevent their being evaluated. For the `cf`
 command mentioned in the prevous paragraph, some users might prefer `cf`
 to be a function, some a macro.
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/macros.html,v 1.9 2007/01/16
-20:58:32 ozten Exp \$
 
