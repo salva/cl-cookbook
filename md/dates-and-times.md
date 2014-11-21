@@ -1,5 +1,4 @@
-Dates and Times
-===============
+# Dates and Times
 
 Common Lisp provides two different ways of looking at time: universal
 time, meaning time in the "real world", and run time, meaning time as

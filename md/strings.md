@@ -1,5 +1,4 @@
-Strings
-=======
+# Strings
 
 The most important thing to know about strings in Common Lisp is
 probably that they are arrays and thus also sequences. This implies that
