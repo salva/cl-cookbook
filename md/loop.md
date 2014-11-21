@@ -1,13 +1,10 @@
-[The Common Lisp Cookbook](index.html) - The Loop Macro
-=======================================================
+# The Loop Macro
 
-Contents
---------
+***Needs work***
 
--   [Background](#background)
--   [Examples](#examples)
+The information here, even if usefull does not follow the "cookbook" approach.
 
-### Background
+---
 
 The Loop Macro is one of the most valuable, and least documented of the
 operations in Common Lisp. It is valuable because it is more powerful,
@@ -34,7 +31,7 @@ The source of this tutorial is [Tutorial for the Common Lisp Loop
 Macro](http://www.ai.sri.com/~pkarp/loop.html) and appears here by
 permission of [Peter Karp](mailto:pkarp@ai.sri.com)
 
-### Examples
+## Examples
 
 Iterate through a list, and print each element.
 
@@ -169,8 +166,3 @@ Several actions provide shorthands for combinations of when/return
     * (loop for x in '(foo 2) 
           always (numberp x))
     NIL
-
-* * * * *
-
-Last modified: Thu Feb 1 13:51:44 SAST 2007
-
