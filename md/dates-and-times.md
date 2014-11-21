@@ -1,18 +1,11 @@
-[The Common Lisp Cookbook](index.html) - Dates and Times
-========================================================
-
-Contents
---------
-
--   [Universal Time](#univ)
--   [Internal Time](#intern)
--   [Computing the day of the week](#weekday)
+Dates and Times
+===============
 
 Common Lisp provides two different ways of looking at time: universal
 time, meaning time in the "real world", and run time, meaning time as
 seen by your computer's CPU. We will deal with both of them separately.
 
-### Universal Time
+## Universal Time
 
 Universal time is represented as the number of seconds that have elapsed
 since 00:00 of January 1, 1900 in the GMT time zone. The function
@@ -141,7 +134,7 @@ information: the above example can be correctly parsed both as March
 conclusion, either force your users to write dates in a fixed format, or
 be prepared to write a very intelligent parsing function!
 
-### Internal Time
+## Internal Time
 
 Internal time is the time as measured by your Lisp environment, using
 your computer's clock. It differs from universal time in three important
@@ -238,7 +231,7 @@ the time it takes to sort them in ascending order.
     ; space allocation:
     ;  3,586 cons cells, 11,704 other bytes, 0 static bytes
 
-### Computing the day of the week
+## Computing the day of the week
 
 In the section about [Universal Time](#univ) we've learned enough to
 write a small function that computes the day of the week. Unfortunately,
@@ -283,13 +276,5 @@ If this is a problem for you, here's a small function by Gerald Doussot
                       -1))
          7)))
 
-* * * * *
 
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/dates\_and\_times.html,v 1.10
-2007/01/16 20:58:32 ozten Exp \$
 
