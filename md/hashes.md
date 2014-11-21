@@ -1,20 +1,4 @@
-[The Common Lisp Cookbook](index.html) - Hash Tables
-====================================================
-
-Contents
---------
-
--   [Introduction](#intro)
--   [Creating a Hash Table](#create)
--   [Getting a value from a Hash Table](#get)
--   [Adding an Element to a Hash Table](#add)
--   [Testing for the Presence of a Key in a Hash Table](#test)
--   [Deleting from a Hash Table](#del)
--   [Traversing a Hash Table](#traverse)
--   [Counting the Entries in a Hash Table](#count)
--   [Performance Issues: The Size of your Hash Table](#size)
-
-### Introduction
+# Hash Tables
 
 Hash Tables are a powerful data structure, associating keys with values
 in a very efficient way. Hash Tables are often preferred over
@@ -22,14 +6,14 @@ association lists whenever performance is an issue, but they introduce a
 little overhead that makes assoc lists better if there are only a few
 key-value pairs to maintain.
 
-### Creating a Hash Table
+## Creating a Hash Table
 
 Hash Tables are created using the function
 [`MAKE-HASH-TABLE`](http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_has.htm).
 It has no required argument. Its most used optional keyword argument is
 `:TEST`, specifying the function used to test the equality of keys.
 
-### Getting a value from a Hash Table
+## Getting a value from a Hash Table
 
 The function
 [`GETHASH`](http://www.lispworks.com/documentation/HyperSpec/Body/f_gethas.htm)
@@ -40,7 +24,7 @@ table. That second value is necessary since NIL is a valid value in a
 key-value pair, so getting NIL as first value from `GETHASH` does not
 necessarily mean that the key was not found in the table.
 
-### Adding an Element to a Hash Table
+## Adding an Element to a Hash Table
 
 If you want to add an element to a hash table, you can use `GETHASH`,
 the function to retrieve elements from the hash table, in conjunction
@@ -60,7 +44,7 @@ with
     1/2
     T
 
-### Testing for the Presence of a Key in a Hash Table
+## Testing for the Presence of a Key in a Hash Table
 
 The first value returned by GETHASH is the object in the hash table
 that's associated with the key you provided as an argument to GETHASH or
@@ -106,7 +90,7 @@ which will always return NIL if no value is found and T otherwise.
         "Key does not exist")
     "Key does not exist"
 
-### Deleting from a Hash Table
+## Deleting from a Hash Table
 
 Use
 [`REMHASH`](http://www.lispworks.com/documentation/HyperSpec/Body/f_remhas.htm)
@@ -135,7 +119,7 @@ entry, NIL otherwise.
     NIL
     NIL
 
-### Traversing a Hash Table
+## Traversing a Hash Table
 
 If you want to perform an action on each entry (i.e., each key-value
 pair) in a hash table, you have several options:
@@ -230,7 +214,7 @@ And there's always
     NIL -> NIL-VALUE
     NIL
 
-### Counting the Entries in a Hash Table
+## Counting the Entries in a Hash Table
 
 No need to use your fingers - Common Lisp has a built-in function to do
 it for you:
@@ -257,7 +241,7 @@ it for you:
     * (hash-table-count *my-hash*)
     0
 
-### Performance Issues: The Size of your Hash Table
+## Performance Issues: The Size of your Hash Table
 
 The `MAKE-HASH-TABLE` function has a couple of optional parameters which
 control the initial size of your hash table and how it'll grow if it
@@ -384,14 +368,3 @@ Note that you can also specify the `REHASH-THRESHOLD` while creating a
 new hash table. One final remark: Your implementation is allowed to
 *completely ignore* the values provided for `REHASH-SIZE` and
 `REHASH-THRESHOLD`...
-
-* * * * *
-
-[Copyright](license.html) © 2002-2007 The Common Lisp Cookbook Project
-
-http://cl-cookbook.sourceforge.net/
-
-\
-\$Header: /cvsroot/cl-cookbook/cl-cookbook/hashes.html,v 1.9 2007/01/16
-20:58:32 ozten Exp \$
-
